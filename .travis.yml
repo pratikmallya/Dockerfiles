@@ -16,5 +16,5 @@ deploy:
     script: make push
     skip_cleanup: true
     on:
-      branch: masterrer # TODO: temporary nonsense
+      branch: master
       condition: ${MAKE_TASK} == build
