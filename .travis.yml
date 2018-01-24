@@ -5,16 +5,12 @@ sudo: required
 services:
   - docker
 
-env:
-  - MAKE_TASK=build
-
 script:
-  - make $MAKE_TASK
+  - ./build.sh
 
 deploy:
   - provider: script
-    script: make push
+    script: ./deploy.sh
     skip_cleanup: true
     on:
       branch: master
-      condition: ${MAKE_TASK} == build
