@@ -1,0 +1,8 @@
+FROM alpine
+MAINTAINER Pratik Mallya <mallya@us.ibm.com>
+WORKDIR /root
+
+RUN apk update && apk add \
+  openssh \
+  ansible
+
