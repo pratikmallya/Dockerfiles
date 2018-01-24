@@ -1,0 +1,20 @@
+language: bash
+
+sudo: required
+
+services:
+  - docker
+
+env:
+  - MAKE_TASK=build
+
+script:
+  - make $MAKE_TASK
+
+deploy:
+  - provider: script
+    script: make push
+    skip_cleanup: true
+    on:
+      branch: masterrer # TODO: temporary nonsense
+      condition: ${MAKE_TASK} == build
