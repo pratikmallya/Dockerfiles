@@ -7,6 +7,7 @@ RUN apk update && apk add \
   ansible
 
 RUN echo "ssh-keygen -N '' -f /root/.ssh/id_rsa" >> ssh_node.sh
+RUN echo "mkdir -p /host/root/.ssh"
 RUN echo "cat /root/.ssh/id_rsa.pub >> /host/root/.ssh/authorized_keys" >> ssh_node.sh
 RUN echo "ssh localhost" >> ssh_node.sh
 RUN chmod +x ssh_node.sh
