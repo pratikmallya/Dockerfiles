@@ -1,0 +1,9 @@
+FROM busybox AS build
+
+RUN mkdir -p /out/bin && \
+  cp /bin/crond /out/bin/crond
+
+FROM scratch
+WORKDIR /
+COPY --from=build /out /
+CMD ["/bin/crond", "-f", "-L", "/opt/crond/cron.log", "-c", "/opt/crond/crontabs"]
