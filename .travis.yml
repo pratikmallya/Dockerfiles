@@ -5,12 +5,17 @@ sudo: required
 services:
   - docker
 
+env:
+  - MAKE_TASK=build
+  - MAKE_TASK=lint
+
 script:
-  - ./build.sh
+  - make $MAKE_TASK
 
 deploy:
   - provider: script
-    script: ./deploy.sh
+    script: make deploy
     skip_cleanup: true
     on:
       branch: master
+      condition: $MAKE_TASK = build
