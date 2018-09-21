@@ -19,5 +19,5 @@ lint:
 deploy: build
 	docker login -u $(DHUSERNAME) -p $(DHPASSWORD)
 	for dockerfile in $(dockerfiles) ; do \
-		docker push $(DHUSERNAME):`echo $${dockerfile} | cut -d '.' -f2` ; \
+		docker push $(DHUSERNAME)/`echo $${dockerfile} | cut -d '.' -f2` ; \
 	done
