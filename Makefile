@@ -1,6 +1,7 @@
 SHELL := bash
 dockerfiles := $(shell ls | grep "Dockerfile.*")
-DHUSERNAME := "pratikmallya"
+DHUSERNAME := $(shell echo ${DHUSERNAME})
+DHPASSWORD := $(shell echo ${DHUSERNAME})
 
 .PHONY: build
 build:
@@ -13,3 +14,10 @@ lint:
 	curl -L https://github.com/hadolint/hadolint/releases/download/v1.13.0/hadolint-Linux-x86_64 -o hadolint
 	chmod +x hadolint
 	./hadolint $(dockerfiles)
+
+.PHONY: deploy
+deploy: build
+	docker login -u $(DHUSERNAME) -p $(DHPASSWORD)
+	for dockerfile in $(dockerfiles) ; do \
+		docker push $(DHUSERNAME):`echo $${dockerfile} | cut -d '.' -f2` ; \
+	done
