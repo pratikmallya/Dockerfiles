@@ -6,7 +6,7 @@ DHPASSWORD := $(shell echo ${DHPASSWORD})
 .PHONY: build
 build:
 	for dockerfile in $(dockerfiles) ; do \
-		docker build -t $(DHUSERNAME):`echo $${dockerfile} | cut -d '.' -f2` -f $$dockerfile  . ; \
+		docker build -t $(DHUSERNAME)/`echo $${dockerfile} | cut -d '.' -f2` -f $$dockerfile  . ; \
 	done
 
 .PHONY: lint
@@ -17,7 +17,7 @@ lint:
 
 .PHONY: deploy
 deploy: build
-	docker login -u $(DHUSERNAME) -p $(DHPASSWORD)
+	echo $(DHPASSWORD) | docker login -u $(DHUSERNAME) --password-stdin
 	for dockerfile in $(dockerfiles) ; do \
 		docker push $(DHUSERNAME)/`echo $${dockerfile} | cut -d '.' -f2` ; \
 	done
