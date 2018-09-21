@@ -1,7 +1,7 @@
 SHELL := bash
 dockerfiles := $(shell ls | grep "Dockerfile.*")
 DHUSERNAME := $(shell echo ${DHUSERNAME})
-DHPASSWORD := $(shell echo ${DHUSERNAME})
+DHPASSWORD := $(shell echo ${DHPASSWORD})
 
 .PHONY: build
 build:
