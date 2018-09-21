@@ -12,4 +12,4 @@ Ubuntu image with kubectl binary installed
 Alpine image to access hosts on a kubernetes node
 
 ### Dockerfile.landscape
-Use [landscape|https://github.com/coinbase/terraform-landscape] to pretty-fy terraform plans
+Use [landscape](https://github.com/coinbase/terraform-landscape) to pretty-fy terraform plans
