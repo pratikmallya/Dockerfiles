@@ -11,7 +11,5 @@ Ubuntu image with kubectl binary installed
 ### Dockerfile.privileged
 Alpine image to access hosts on a kubernetes node
 
-### Dockerfile.crond
-Minimal image with crond binary to run as an isolated container.
-You will need to mount a volume at `/opt/crond` to get persistent data and
-logs.
+### Dockerfile.landscape
+Use [landscape|https://github.com/coinbase/terraform-landscape] to pretty-fy terraform plans
